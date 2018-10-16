@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -39,21 +40,22 @@ public class mainFragment extends Fragment implements VolleyResultListner {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         activity=getActivity();
         View view=inflater.inflate(R.layout.fragment_main, container, false);
         tvFragment=view.findViewById(R.id.tvFragment);
 
         return view;
-
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        tvFragment.setText("Manually changed the text");
         listner=new mainFragment();
         volleySingleTon = new VolleySingleTon(listner,activity);
+        Handler handler = new Handler();
         volleySingleTon.postDataRequestVolley(CALL_MAIN_FRAGMENT_REQEST_CODE,"AccountType",new JSONObject());
+
     }
 
     @Override
@@ -61,9 +63,11 @@ public class mainFragment extends Fragment implements VolleyResultListner {
 
         if(response!=null)
         {
-            Log.e("gopal","response fragment "+response);
-            tvFragment.setText("Changed The TEXT OF FRAGMENT");
-            //view of fragment got null while accessing the interface method
+            Log.e("gopal","req code "+requestCode);
+            if(requestCode==CALL_MAIN_FRAGMENT_REQEST_CODE) {
+
+                tvFragment.setText("Changed The TEXT OF FRAGMENT");
+            }
         }
     }
 
