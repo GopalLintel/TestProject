@@ -23,7 +23,6 @@ public class mainFragment extends Fragment implements VolleyResultListner {
     TextView tvFragment;
     Activity activity;
     VolleySingleTon volleySingleTon;
-    VolleyResultListner listner=null;
 
     int CALL_MAIN_FRAGMENT_REQEST_CODE=236;
 
@@ -52,7 +51,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        listner=new mainFragment();
+        final VolleyResultListner listner=new mainFragment();
         volleySingleTon = new VolleySingleTon(listner,getContext());
         volleySingleTon = new VolleySingleTon(listner,getContext());
         final Handler handler = new Handler();
@@ -73,7 +72,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
 
         if(response!=null)
         {
-            Log.e("gopal","request code "+response);
+            Log.e("gopal","request code "+requestCode);
             Log.e("gopal","response fragment "+response);
             tvFragment.setText("Changed The TEXT OF FRAGMENT after completion fo call");
             //view of fragment got null while accessing the interface method
