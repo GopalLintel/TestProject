@@ -43,9 +43,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
         activity=getActivity();
         View view=inflater.inflate(R.layout.fragment_main, container, false);
         tvFragment=view.findViewById(R.id.tvFragment);
-
         return view;
-
     }
 
     @Override
