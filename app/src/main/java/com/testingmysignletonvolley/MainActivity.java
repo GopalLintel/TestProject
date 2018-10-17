@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements VolleyResultListn
         transaction.replace(R.id.frameLayout, new mainFragment());
         transaction.addToBackStack(null);
         transaction.commit();
-
         getaccountFromServer();
     }
 
@@ -50,9 +49,7 @@ public class MainActivity extends AppCompatActivity implements VolleyResultListn
         volleySingleTon.postDataRequestVolley(CALL_MAIN_ACTIVITY_REQEST_CODE3,"AccountType",new JSONObject());
         volleySingleTon.postDataRequestVolley(CALL_MAIN_ACTIVITY_REQEST_CODE4,"BankMaster",new JSONObject());
     }
-
-
-
+    
     public void alertDialog(final String content,final Activity activity) {
 
         LayoutInflater li = LayoutInflater.from(activity);

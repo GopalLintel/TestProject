@@ -56,7 +56,6 @@ public class VolleySingleTon {
         }catch(Exception e){
         }
     }
-
     public void postDataRequestVolleyWithHeadersAUTH(final int requestCode, String CallMethod,JSONObject sendObj){
         try {
             String url=BASE_URL+BASE_PATH+CallMethod;
@@ -91,7 +90,6 @@ public class VolleySingleTon {
         }catch(Exception e){
         }
     }
-
 
     public void getDataRequestVolley(final int requestCode, String CallMethod){
         try {
