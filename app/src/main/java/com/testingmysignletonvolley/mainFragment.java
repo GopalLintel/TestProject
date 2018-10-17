@@ -51,7 +51,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final VolleyResultListner listner=new mainFragment();
+        final VolleyResultListner listner= new mainFragment();
         volleySingleTon = new VolleySingleTon(listner,getContext());
         volleySingleTon = new VolleySingleTon(listner,getContext());
         final Handler handler = new Handler();
