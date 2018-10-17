@@ -53,7 +53,6 @@ public class mainFragment extends Fragment implements VolleyResultListner {
         super.onActivityCreated(savedInstanceState);
         final VolleyResultListner listner= new mainFragment();
         volleySingleTon = new VolleySingleTon(listner,getContext());
-        volleySingleTon = new VolleySingleTon(listner,getContext());
         final Handler handler = new Handler();
 
         tvFragment.setText("TExt changed before calling");
@@ -63,7 +62,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
             public void run() {
                 volleySingleTon.postDataRequestVolley(CALL_MAIN_FRAGMENT_REQEST_CODE,"AccountType",new JSONObject());
             }
-        }, 10000);
+        }, 6000);
 
     }
 
@@ -74,7 +73,14 @@ public class mainFragment extends Fragment implements VolleyResultListner {
         {
             Log.e("gopal","request code "+requestCode);
             Log.e("gopal","response fragment "+response);
-            tvFragment.setText("Changed The TEXT OF FRAGMENT after completion fo call");
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    tvFragment.setText("Changed The TEXT OF FRAGMENT after completion fo call");
+                }
+            }, 10000);
+
             //view of fragment got null while accessing the interface method
         }
     }

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements VolleyResultListn
         volleySingleTon.postDataRequestVolley(CALL_MAIN_ACTIVITY_REQEST_CODE,"AccountType",new JSONObject());
         volleySingleTon.postDataRequestVolley(CALL_MAIN_ACTIVITY_REQEST_CODE2,"BankMaster",new JSONObject());
         volleySingleTon.postDataRequestVolley(CALL_MAIN_ACTIVITY_REQEST_CODE3,"AccountType",new JSONObject());
-        volleySingleTon.postDataRequestVolley(CALL_MAIN_ACTIVITY_REQEST_CODE4,"BankMaster",new JSONObject());
+       volleySingleTon.postDataRequestVolley(CALL_MAIN_ACTIVITY_REQEST_CODE4,"BankMaster",new JSONObject());
     }
 
 

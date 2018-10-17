@@ -1,6 +1,7 @@
 package com.testingmysignletonvolley;
 
-import android.app.Fragment;
+import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class VolleySingleTon {
     Context mContext;
 
     VolleySingleTon(VolleyResultListner resultCallback, Context context){
-        mResultCallback = resultCallback;
+        mResultCallback =  resultCallback;
         mContext = context;
         queue = Volley.newRequestQueue(mContext);
     }
