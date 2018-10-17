@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements VolleyResultListn
 
                             if (response.getBoolean("response")) {
 
-                                Log.e("gopal","request_code "+requestCode);
+                                //Log.e("gopal","request_code "+requestCode);
                                 Log.e("gopal",response.toString());
 
                             } else {
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements VolleyResultListn
 
                             if (response.getBoolean("response")) {
 
-                                Log.e("gopal","request_code "+requestCode);
+                               // Log.e("gopal","request_code "+requestCode);
                                 Log.e("gopal",response.toString());
 
                             } else {
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements VolleyResultListn
 
                             if (response.getBoolean("response")) {
 
-                                Log.e("gopal","request_code "+requestCode);
+                                //Log.e("gopal","request_code "+requestCode);
                                 Log.e("gopal",response.toString());
 
                             } else {
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements VolleyResultListn
 
                             if (response.getBoolean("response")) {
 
-                                Log.e("gopal","request_code "+requestCode);
+                                //Log.e("gopal","request_code "+requestCode);
                                 Log.e("gopal",response.toString());
 
                             } else {
