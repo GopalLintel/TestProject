@@ -54,7 +54,13 @@ public class mainFragment extends Fragment implements VolleyResultListner {
         listner=new mainFragment();
         volleySingleTon = new VolleySingleTon(listner,activity);
         Handler handler = new Handler();
-        volleySingleTon.postDataRequestVolley(CALL_MAIN_FRAGMENT_REQEST_CODE,"AccountType",new JSONObject());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                volleySingleTon.postDataRequestVolley(CALL_MAIN_FRAGMENT_REQEST_CODE,"AccountType",new JSONObject());
+            }
+        }, 10000);
+
 
     }
 
@@ -64,6 +70,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
         if(response!=null)
         {
             Log.e("gopal","req code "+requestCode);
+            Log.e("gopal","Fragment Response "+response);
             if(requestCode==CALL_MAIN_FRAGMENT_REQEST_CODE) {
 
                 tvFragment.setText("Changed The TEXT OF FRAGMENT");
