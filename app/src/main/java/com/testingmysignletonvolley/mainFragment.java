@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import org.json.JSONObject;
@@ -52,7 +53,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final VolleyResultListner listner= new mainFragment();
-        volleySingleTon = new VolleySingleTon(listner,getContext());
+        volleySingleTon = new VolleySingleTon(listner,activity.getApplicationContext());
         final Handler handler = new Handler();
 
         tvFragment.setText("TExt changed before calling");
@@ -62,7 +63,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
             public void run() {
                 volleySingleTon.postDataRequestVolley(CALL_MAIN_FRAGMENT_REQEST_CODE,"AccountType",new JSONObject());
             }
-        }, 6000);
+        }, 10000);
 
     }
 
@@ -74,12 +75,8 @@ public class mainFragment extends Fragment implements VolleyResultListner {
             Log.e("gopal","request code "+requestCode);
             Log.e("gopal","response fragment "+response);
             final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
+
                     tvFragment.setText("Changed The TEXT OF FRAGMENT after completion fo call");
-                }
-            }, 10000);
 
             //view of fragment got null while accessing the interface method
         }
