@@ -53,7 +53,7 @@ public class mainFragment extends Fragment implements VolleyResultListner {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final VolleyResultListner listner= new mainFragment();
-        volleySingleTon = new VolleySingleTon(listner,activity.getApplicationContext());
+        volleySingleTon = new VolleySingleTon(listner,getContext());
         final Handler handler = new Handler();
 
         tvFragment.setText("TExt changed before calling");
