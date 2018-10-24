@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,77 +12,63 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
-public class mainFragment extends Fragment implements VolleyResultListner {
+
+public class mainFragment extends Fragment implements ResultInterface {
 
     TextView tvFragment;
-    Activity activity;
     VolleySingleTon volleySingleTon;
+    Activity activity;
 
-    int CALL_MAIN_FRAGMENT_REQEST_CODE=236;
+    public static mainFragment newInstance(String param1, String param2) {
+        mainFragment fragment = new mainFragment();
 
-    public static mainFragment newInstance() {
-        return new mainFragment();
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        activity=getActivity();
-        View view=inflater.inflate(R.layout.fragment_main, container, false);
+        // Inflate the layout for this fragment
+        View view= inflater.inflate(R.layout.fragment_main, container, false);
         tvFragment=view.findViewById(R.id.tvFragment);
 
         return view;
-
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final VolleyResultListner listner= new mainFragment();
-        volleySingleTon = new VolleySingleTon(listner,getContext());
-        final Handler handler = new Handler();
+        activity=getActivity();
+        volleySingleTon=new VolleySingleTon(activity,mainFragment.this);
+        tvFragment.setText("Start text changed");
+        volleySingleTon.postDataRequestVolley(190,"AccountType",new JSONObject());
 
-        tvFragment.setText("TExt changed before calling");
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                volleySingleTon.postDataRequestVolley(CALL_MAIN_FRAGMENT_REQEST_CODE,"AccountType",new JSONObject());
-            }
-        }, 10000);
 
     }
 
     @Override
-    public void onSuccess(int requestCode, JSONObject response) {
-
-        if(response!=null)
-        {
-            Log.e("gopal","request code "+requestCode);
-            Log.e("gopal","response fragment "+response);
-            final Handler handler = new Handler();
-
-                    tvFragment.setText("Changed The TEXT OF FRAGMENT after completion fo call");
-
-            //view of fragment got null while accessing the interface method
-        }
+    public void onResult(int requestCode, JSONObject response) {
+        Log.e("gopal","req code "+requestCode);
+        Log.e("gopal","fragment response  "+response);
+        tvFragment.setText("got the response");
     }
 
     @Override
-    public void onError(int requestCode, VolleyError error) {
+    public void onError(int reqId, VolleyError error) {
 
     }
 }
